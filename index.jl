@@ -51,8 +51,8 @@ while userChoice != "paper" && userChoice != "rock" && userChoice != "scissors"
     try
         print("Please type 'p' for paper or 'r' for rock or 's' for scissors: ")
         
-        characterChoice = readline()
-        global userChoice = convertCharToCompleteStringOfChoice(characterChoice)
+        characterUserChoice = readline()
+        global userChoice = convertCharToCompleteStringOfChoice(characterUserChoice)
     catch e
     end
 end
@@ -69,4 +69,3 @@ end
 
 print("\nComputer selected: " * computerChoice)
 print("\nUser selected: " * userChoice * "\n\n")
-

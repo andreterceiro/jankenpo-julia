@@ -1,37 +1,4 @@
-print("Jankenpo\n")
-print("========\n\n")
-userChoice = ""
 using Random
-
-while userChoice != "paper" && userChoice != "rock" userChoice != "scissors"
-    characterChoice = ""
-    try
-        print("Please type 'p' for paper or 'r' for rock or 's' for scissors: ")
-        
-        characterChoice = readline()
-        global userChoice = convertCharToCompleteStringOfChoice(
-            characterChoice
-        )
-        print("***********" * userChoice * "*********************")
-    catch
-    end
-    
-    print(userChoice)
-    print("\n=" * characterChoice * "=\n")
-end
-
-computerChoice = getCompleteStringComputerChoice()
-
-if ((userChoice == "paper" && computerChoice == "rock") || (userChoice == "rock" && computerChoice == "scissors") (userChoice == "scissors" && computerChoice == "paper")
-    print("The winner is: user")
-else if (userChoice == computerChoice)
-    print("The winner is: draw")
-else
-    print("The winner is: computer")
-end
-
-print("Computer selected: " * computerChoice)
-print("User selected: " * userChoice)
 
 """
 Returns a random string of a computer choice, "paper", "rock" or "scissors"
@@ -39,9 +6,9 @@ Returns a random string of a computer choice, "paper", "rock" or "scissors"
 @return String
 """
 function getCompleteStringComputerChoice()
-    intComputerChoice = rand(1,3)
+    intComputerChoice = abs(rand(Int) % 3)
 
-   if  intComputerChoice == 1
+    if  intComputerChoice == 1
          return "paper"
     end
 
@@ -60,19 +27,46 @@ Converts a string related to a choice ("p", "r" or "s"), to a complete string of
 @return String
 """
 function convertCharToCompleteStringOfChoice(charChoice)
-    print("---------------" * charChoice * "-----------------------")
     if charChoice == "p"
-         return "paper"
+        return "paper"
     end
 
     if charChoice == "r"
-         return "rock"
+        return "rock"
     end
  
     if charChoice == "s"
-         return "scissors"
+        return "scissors"
     end
     
-    throw("You need to specify 'p', 'r' or 's)
+    throw("You need to specify 'p', 'r' or 's'")
 end
+
+print("Jankenpo\n")
+print("========\n\n")
+userChoice = ""
+
+while userChoice != "paper" && userChoice != "rock" && userChoice != "scissors"
+    characterChoice = ""
+    try
+        print("Please type 'p' for paper or 'r' for rock or 's' for scissors: ")
+        
+        characterChoice = readline()
+        global userChoice = convertCharToCompleteStringOfChoice(characterChoice)
+    catch e
+    end
+end
+
+computerChoice = getCompleteStringComputerChoice()
+
+if ((userChoice == "paper" && computerChoice == "rock") || (userChoice == "rock" && computerChoice == "scissors") || (userChoice == "scissors" && computerChoice == "paper"))
+    print("The winner is: user\n")
+elseif (userChoice == computerChoice)
+    print("The winner is: draw\n")
+else
+    print("The winner is: computer\n")
+end
+
+print("\nComputer selected: " * computerChoice)
+print("\nUser selected: " * userChoice * "\n\n")
 
